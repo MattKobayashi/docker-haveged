@@ -13,7 +13,7 @@ RUN apk --no-cache upgrade \
 FROM alpine:3
 
 # Copy relevant compiled files to distribution image
-RUN adduser --system haveged
+# RUN adduser --system haveged
 COPY --from=buildenv /usr/local/lib/ /usr/local/lib/
 COPY --from=buildenv /usr/local/sbin/ /usr/local/sbin/
 COPY --from=buildenv /usr/local/include/ /usr/local/include/
@@ -22,7 +22,7 @@ RUN ldconfig -n /usr/local/lib \
     && apk --no-cache upgrade
 
 # Switch to 'haveged' user
-USER haveged
+# USER haveged
 
 # Set entrypoint
 ENTRYPOINT ["haveged"]
